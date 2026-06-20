@@ -2,11 +2,15 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../context/ThemeContext';
+import Logo3D from './Logo3D';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { isDark } = useTheme();
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,6 +19,29 @@ const Navbar = () => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // ===== SMOOTH SCROLL FUNCTION (Only for homepage) =====
+  const handleNavClick = (e, href) => {
+    e.preventDefault();
+    
+    // Agar home page pe nahi hai toh home page pe redirect karo
+    if (!isHomePage) {
+      window.location.href = '/' + href;
+      return;
+    }
+
+    const element = document.querySelector(href);
+    if (element) {
+      const navbarHeight = 80;
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      const offsetPosition = elementPosition - navbarHeight;
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+    setIsOpen(false);
+  };
 
   const navLinks = [
     { name: 'Services', href: '#services' },
@@ -39,13 +66,9 @@ const Navbar = () => {
     >
       <div className="container-custom flex justify-between items-center h-20 lg:h-24">
         
-        {/* Logo — Tumhari existing logo.png */}
-        <a href="#" className="flex items-center gap-3 group">
-          <img 
-            src="/assets/logo/logo.png" 
-            alt="Barkat Media" 
-            className="h-12 w-12 rounded-xl object-cover"
-          />
+        {/* Logo — Homepage Link */}
+        <Link to="/" className="flex items-center gap-3 group">
+          <Logo3D className="flex-shrink-0" />
           <div className="hidden sm:block">
             <span className={`text-2xl font-serif font-semibold tracking-tight ${
               isDark ? 'text-white' : 'text-barkat-green'
@@ -61,7 +84,7 @@ const Navbar = () => {
               Digital Media Agency
             </p>
           </div>
-        </a>
+        </Link>
 
         {/* Desktop Nav */}
         <div className="hidden lg:flex items-center gap-1">
@@ -69,6 +92,7 @@ const Navbar = () => {
             <a
               key={link.name}
               href={link.href}
+              onClick={(e) => handleNavClick(e, link.href)}
               className={`relative px-5 py-2 text-sm font-medium transition-colors duration-300 rounded-full ${
                 isDark
                   ? 'text-white/60 hover:text-white hover:bg-white/5'
@@ -84,9 +108,13 @@ const Navbar = () => {
             isDark ? 'bg-white/10' : 'bg-barkat-green/10'
           }`}></div>
           
-          <a href="#contact" className="btn-primary">
+          {/* ===== START A PROJECT — LINK TO /start-project ===== */}
+          <Link
+            to="/start-project"
+            className="btn-primary"
+          >
             <span>Start a Project</span>
-          </a>
+          </Link>
         </div>
 
         {/* Mobile Menu Button */}
@@ -129,26 +157,25 @@ const Navbar = () => {
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.08 }}
                   href={link.href}
+                  onClick={(e) => handleNavClick(e, link.href)}
                   className={`text-lg font-medium py-3 px-4 rounded-xl transition-colors ${
                     isDark
                       ? 'text-white/60 hover:text-white hover:bg-white/5'
                       : 'text-barkat-text/70 hover:text-barkat-green hover:bg-barkat-green/5'
                   }`}
-                  onClick={() => setIsOpen(false)}
                 >
                   {link.name}
                 </motion.a>
               ))}
-              <motion.a
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 }}
-                href="#contact"
-                className="btn-primary text-center"
+              
+              {/* ===== MOBILE: START A PROJECT ===== */}
+              <Link
+                to="/start-project"
                 onClick={() => setIsOpen(false)}
+                className="btn-primary text-center"
               >
                 <span>Start a Project</span>
-              </motion.a>
+              </Link>
             </div>
           </motion.div>
         )}

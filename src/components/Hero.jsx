@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Play } from 'lucide-react';
 import { useTheme } from '../context/ThemeContext';
+import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const { isDark } = useTheme();
@@ -12,7 +13,7 @@ const Hero = () => {
         isDark ? 'bg-transparent' : 'bg-transparent'
       }`}
     >
-      {/* ====== BACKGROUND CIRCLES ====== */}
+      {/* Background Circles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <motion.div
           animate={{
@@ -25,7 +26,6 @@ const Hero = () => {
             isDark ? 'bg-barkat-green/20' : 'bg-barkat-gold/10'
           }`}
         />
-
         <motion.div
           animate={{
             scale: [1, 1.3, 1],
@@ -37,7 +37,6 @@ const Hero = () => {
             isDark ? 'bg-barkat-gold/10' : 'bg-barkat-green/10'
           }`}
         />
-
         <motion.div
           animate={{
             scale: [1, 1.1, 1],
@@ -51,7 +50,6 @@ const Hero = () => {
         />
       </div>
 
-      {/* ====== CONTENT — TRANSPARENT ====== */}
       <div className="container-custom relative z-10 grid lg:grid-cols-2 gap-16 items-center py-20">
         
         {/* Left Content */}
@@ -89,10 +87,12 @@ const Hero = () => {
           </p>
           
           <div className="flex flex-wrap gap-4 mt-8">
-            <a href="#contact" className="btn-primary">
+            {/* ===== START A PROJECT — LINK TO /start-project ===== */}
+            <Link to="/start-project" className="btn-primary">
               <span>Start a project</span>
               <ArrowRight size={18} />
-            </a>
+            </Link>
+            
             <a
               href="#services"
               className={`group inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 font-semibold transition-all duration-300 ${
@@ -147,11 +147,8 @@ const Hero = () => {
         >
           <div className="relative w-full aspect-square max-w-lg">
             
-            {/* Outer Circle — Transparent */}
-            <div className={`absolute inset-0 rounded-full bg-transparent`}>
-              {/* Middle Circle — Transparent */}
-              <div className={`absolute inset-[6%] rounded-full bg-transparent`}>
-                {/* Inner Circle — Logo Background (Thoda sa) */}
+            <div className="absolute inset-0 rounded-full bg-transparent">
+              <div className="absolute inset-[6%] rounded-full bg-transparent">
                 <div
                   className={`absolute inset-[12%] rounded-full flex flex-col items-center justify-center ${
                     isDark
@@ -159,9 +156,8 @@ const Hero = () => {
                       : 'bg-white/60 backdrop-blur-sm border border-barkat-green/5'
                   } shadow-2xl`}
                 >
-                  {/* Logo Image */}
                   <img
-                    src="/assets/logo/logo.png"
+                    src="/logo.png"
                     alt="Barkat Media"
                     className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-2xl object-cover shadow-xl"
                     onError={(e) => {
@@ -196,7 +192,7 @@ const Hero = () => {
               </div>
             </div>
 
-            {/* Floating Labels — Transparent */}
+            {/* Floating Labels */}
             <motion.div
               animate={{ y: [0, -15, 0], rotate: [0, 5, 0] }}
               transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut' }}
