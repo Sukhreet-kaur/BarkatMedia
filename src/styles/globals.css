@@ -1,0 +1,151 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply font-sans bg-white text-barkat-text transition-colors duration-500;
+  }
+
+  .dark body {
+    @apply bg-barkat-darkBg text-barkat-textDark;
+  }
+
+  h1, h2, h3, h4, h5 {
+    @apply font-serif;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-barkat-lightGreen dark:bg-barkat-dark;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-barkat-green/40 rounded-full dark:bg-barkat-gold/40;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-barkat-green dark:bg-barkat-gold;
+  }
+
+  ::selection {
+    @apply bg-barkat-gold text-white;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-6 lg:px-8;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply relative overflow-hidden inline-flex items-center justify-center gap-2 
+           px-8 py-4 rounded-full 
+           font-semibold text-sm sm:text-base
+           transition-all duration-500 
+           hover:shadow-2xl hover:-translate-y-1
+           focus:outline-none focus:ring-2 focus:ring-barkat-green focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-barkat-green to-barkat-greenDark text-white
+           hover:shadow-barkat-green/30;
+  }
+
+  .btn-primary::after {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-barkat-gold to-yellow-600 opacity-0 transition-opacity duration-500;
+  }
+
+  .btn-primary:hover::after {
+    @apply opacity-100;
+  }
+
+  .btn-primary span {
+    @apply relative z-10;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-2 px-6 py-3 rounded-full border-2 font-semibold transition-all duration-300 
+           border-barkat-green/20 text-barkat-green hover:bg-barkat-green hover:text-white
+           dark:border-white/20 dark:text-white/80 dark:hover:bg-white dark:hover:text-barkat-dark;
+  }
+
+  /* Glassmorphism */
+  .glass {
+    @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-xl 
+           dark:bg-barkat-dark/60 dark:border-white/5 dark:shadow-2xl;
+  }
+
+  /* Cards */
+  .card {
+    @apply bg-white rounded-2xl p-8 shadow-lg transition-all duration-300 
+           hover:shadow-xl hover:-translate-y-1
+           dark:bg-barkat-dark/50 dark:border dark:border-white/5
+           dark:hover:bg-barkat-dark/70;
+  }
+
+  /* Titles */
+  .section-title {
+    @apply text-4xl md:text-5xl lg:text-6xl font-serif font-semibold 
+           text-barkat-green dark:text-white leading-tight;
+  }
+
+  .section-subtitle {
+    @apply text-barkat-gold font-semibold tracking-[0.25em] uppercase text-sm 
+           flex items-center gap-3;
+  }
+
+  .section-subtitle::before {
+    content: '';
+    @apply w-12 h-px bg-barkat-gold;
+  }
+
+  .text-body {
+    @apply text-barkat-text/70 dark:text-white/60;
+  }
+
+  .text-muted {
+    @apply text-barkat-textLight dark:text-white/40;
+  }
+  /* ... existing code ... */
+
+/* Hide default cursor on desktop only */
+@media (min-width: 768px) {
+  body {
+    cursor: none;
+  }
+  
+  a, button, .btn, .card, input, select, textarea {
+    cursor: none;
+  }
+}
+
+/* Show cursor on mobile */
+@media (max-width: 767px) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+/* Glass Effects */
+.glass {
+  @apply bg-white/70 backdrop-blur-xl border border-white/20 shadow-xl;
+}
+
+.glass-dark {
+  @apply bg-barkat-darkBg/60 backdrop-blur-xl border border-white/10 shadow-xl;
+}
+
+.glass-light {
+  @apply bg-white/80 backdrop-blur-sm border border-barkat-green/5 shadow-lg shadow-barkat-green/5;
+}
+}
+

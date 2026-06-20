@@ -1,0 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Inter:wght@400;500;600;700&display=swap');
+@import './styles/globals.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-white text-barkat-dark font-sans;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  .btn-primary {
+    @apply bg-barkat-green text-white px-6 py-3 rounded-full font-semibold hover:bg-barkat-dark transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+  .section-title {
+    @apply text-3xl md:text-4xl lg:text-5xl font-serif font-semibold text-barkat-green;
+  }
+  .section-subtitle {
+    @apply text-barkat-gold font-semibold tracking-widest uppercase text-sm;
+  }
+}
