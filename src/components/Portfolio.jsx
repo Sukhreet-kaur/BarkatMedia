@@ -8,56 +8,61 @@ const Portfolio = () => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const projects = [
-    {
-      id: 1,
-      title: 'Aanya & Faizan',
-      category: 'Wedding Film',
-      location: 'Srinagar',
-      gradient: 'from-emerald-600 to-teal-700',
-      description: 'Cinematic wedding coverage capturing the beauty of Kashmiri traditions.'
-    },
-    {
-      id: 2,
-      title: 'Lakeside Resort',
-      category: 'Staffing',
-      location: 'Dal Lake',
-      gradient: 'from-amber-600 to-orange-700',
-      description: 'Full-season staffing solution for a premium lakeside property.'
-    },
-    {
-      id: 3,
-      title: 'Houseboat Stays',
-      category: 'Social Reel',
-      location: 'Dal Lake',
-      gradient: 'from-blue-600 to-indigo-700',
-      description: 'Viral social media campaign for houseboat experiences.'
-    },
-    {
-      id: 4,
-      title: 'Mehak & Owais',
-      category: 'Photography',
-      location: 'Gulmarg',
-      gradient: 'from-rose-600 to-pink-700',
-      description: 'Dreamy wedding photography amidst snow-capped mountains.'
-    },
-    {
-      id: 5,
-      title: 'Orchard Lodge',
-      category: 'Staffing',
-      location: 'Sopore',
-      gradient: 'from-green-600 to-emerald-700',
-      description: 'Event staffing for a boutique orchard wedding venue.'
-    },
-    {
-      id: 6,
-      title: 'Valley Apple Co.',
-      category: 'Social & Ads',
-      location: 'Kashmir Valley',
-      gradient: 'from-red-600 to-orange-700',
-      description: 'Brand awareness campaign for Kashmir\'s finest apples.'
-    }
-  ];
-
+  {
+    id: 1,
+    title: 'Aanya & Faizan',
+    category: 'Wedding Film',
+    location: 'Srinagar',
+    emoji: '💍',
+    gradient: 'from-rose-600 to-pink-700',
+    description: 'Cinematic wedding coverage capturing the beauty of Kashmiri traditions.'
+  },
+  {
+    id: 2,
+    title: 'Lakeside Resort',
+    category: 'Staffing',
+    location: 'Dal Lake',
+    emoji: '🏨',
+    gradient: 'from-blue-600 to-indigo-700',
+    description: 'Full-season staffing solution for a premium lakeside property.'
+  },
+  {
+    id: 3,
+    title: 'Houseboat Stays',
+    category: 'Social Reel',
+    location: 'Dal Lake',
+    emoji: '🚣',
+    gradient: 'from-cyan-600 to-blue-700',
+    description: 'Viral social media campaign for houseboat experiences.'
+  },
+  {
+    id: 4,
+    title: 'Mehak & Owais',
+    category: 'Photography',
+    location: 'Gulmarg',
+    emoji: '❄️',
+    gradient: 'from-sky-600 to-cyan-700',
+    description: 'Dreamy wedding photography amidst snow-capped mountains.'
+  },
+  {
+    id: 5,
+    title: 'Orchard Lodge',
+    category: 'Staffing',
+    location: 'Sopore',
+    emoji: '🌳',
+    gradient: 'from-emerald-600 to-green-700',
+    description: 'Event staffing for a boutique orchard wedding venue.'
+  },
+  {
+    id: 6,
+    title: 'Valley Apple Co.',
+    category: 'Social & Ads',
+    location: 'Kashmir Valley',
+    emoji: '🍎',
+    gradient: 'from-red-600 to-orange-700',
+    description: 'Brand awareness campaign for Kashmir\'s finest apples.'
+  }
+];
   const categories = ['All', ...new Set(projects.map(p => p.category))];
   const [activeCategory, setActiveCategory] = useState('All');
 

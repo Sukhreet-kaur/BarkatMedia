@@ -5,6 +5,7 @@ import { Share2, Play, Globe, ArrowRight } from 'lucide-react';
 const Footer = () => {
   const { isDark } = useTheme();
   const year = new Date().getFullYear();
+  const logoSrc = `${import.meta.env.BASE_URL}logo.png`;
 
   const quickLinks = [
     { name: 'Services', href: '#services' },
@@ -31,9 +32,11 @@ const Footer = () => {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-barkat-green to-barkat-greenDark flex items-center justify-center text-white font-serif font-bold">
-                B
-              </div>
+              <img
+                src={logoSrc}
+                alt="Barkat Media"
+                className="w-10 h-10 rounded-xl object-cover shadow-md"
+              />
               <div>
                 <span className={`text-xl font-serif font-semibold ${
                   isDark ? 'text-white' : 'text-barkat-green'

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 
 const Hero = () => {
   const { isDark } = useTheme();
+  const logoSrc = `${import.meta.env.BASE_URL}logo.png`;
 
   return (
     <section
@@ -157,7 +158,7 @@ const Hero = () => {
                   } shadow-2xl`}
                 >
                   <img
-                    src="/logo.png"
+                    src={logoSrc}
                     alt="Barkat Media"
                     className="w-32 h-32 md:w-40 md:h-40 lg:w-48 lg:h-48 rounded-2xl object-cover shadow-xl"
                     onError={(e) => {

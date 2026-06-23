@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const LoadingScreen = ({ onComplete }) => {
   const [isLoading, setIsLoading] = useState(true);
+  const logoSrc = `${import.meta.env.BASE_URL}logo.png`;
 
   useEffect(() => {
     // 2.5 seconds ke baad loading complete
@@ -46,8 +47,12 @@ const LoadingScreen = ({ onComplete }) => {
             style={{ perspective: 1000 }}
             className="relative"
           >
-            <div className="w-28 h-28 md:w-36 md:h-36 rounded-2xl bg-gradient-to-br from-barkat-green to-barkat-greenDark shadow-2xl shadow-barkat-green/30 flex items-center justify-center">
-              <span className="text-5xl md:text-6xl font-serif font-bold text-white">B</span>
+            <div className="w-28 h-28 md:w-36 md:h-36 rounded-2xl bg-gradient-to-br from-barkat-green to-barkat-greenDark shadow-2xl shadow-barkat-green/30 flex items-center justify-center overflow-hidden">
+              <img
+                src={logoSrc}
+                alt="Barkat Media"
+                className="relative z-10 h-full w-full object-cover"
+              />
               
               {/* Gold Ring */}
               <div className="absolute -inset-1 rounded-2xl bg-gradient-to-r from-barkat-gold/40 via-yellow-500/20 to-barkat-gold/40 blur-sm"></div>

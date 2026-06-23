@@ -2,6 +2,8 @@ import React from 'react';
 import { motion } from 'framer-motion';
 
 const Logo3D = ({ className = '' }) => {
+  const logoSrc = `${import.meta.env.BASE_URL}logo.png`;
+
   return (
     <motion.div
       className={`relative ${className}`}
@@ -114,8 +116,10 @@ const Logo3D = ({ className = '' }) => {
           className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent skew-x-[-20deg]"
         />
 
-        {/* Brand Letter */}
-        <motion.span
+        {/* Brand Logo */}
+        <motion.img
+          src={logoSrc}
+          alt="Barkat Media"
           animate={{
             scale: [1, 1.05, 1],
           }}
@@ -124,10 +128,8 @@ const Logo3D = ({ className = '' }) => {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="text-3xl font-serif font-bold text-white relative z-10"
-        >
-          B
-        </motion.span>
+          className="relative z-10 h-full w-full object-cover"
+        />
 
         {/* Gold Accent Dot */}
         <motion.div
